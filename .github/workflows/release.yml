@@ -4,11 +4,21 @@ on:
   release:
     types: [published]
 
+permissions:
+  contents: write
+
 jobs:
   release-zip:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Set manifest version from tag
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          jq --arg v "$VERSION" '.version = $v' custom_components/xiaomi_miot/manifest.json > manifest.tmp
+          mv manifest.tmp custom_components/xiaomi_miot/manifest.json
+          grep '"version"' custom_components/xiaomi_miot/manifest.json
 
       - name: ZIP Component Dir
         run: |
