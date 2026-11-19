@@ -2754,20 +2754,16 @@ DEVICE_CUSTOMIZES = {
     'xiaomi.vacuum.d103cn': {
         'interval_seconds': 120,
         'chunk_coordinators': [
-            {'interval': 11, 'props': 'status', 'notify': True},
-            {'interval': 21, 'props': 'mode,sweep_mop_type'},
-            {'interval': 31, 'props': 'charging_state,vacuum_position'},
+            {'interval': 11, 'props': 'status,fault', 'notify': True},
+            {'interval': 21, 'props': 'mode,mop_mode,task_status,work_mode'},
+            {'interval': 31, 'props': 'battery_level,charging_state,dry_left_time'},
             {'interval': 41, 'props': 'cleaning_area,cleaning_time'},
-            {'interval': 61, 'props': 'mop_status,battery_level,clean_times'},
-            {'interval': 150, 'props': 'auto_*,*_detection'},
-            {'interval': 200, 'props': 'carpet_*,water_*'},
-            {'interval': 250, 'props': 'map_*'},
-            {'interval': 300, 'props': 'filter_l*,mop_l*,dust_bag_l*,brush_l*,detergent_l*'},
-            {'interval': 999, 'props': 'clean_record,map_3d_info,room_information,room_ids'},
+            {'interval': 150, 'props': 'waterbox_status,wash_station,carpet_press,break_point_restart,child_lock'},
+            {'interval': 300, 'props': 'filter_l*,mop_l*,brush_l*'},
+            {'interval': 999, 'props': 'total_clean_*,volume'},
         ],
-        'button_actions': 'start_sweep,stop_sweeping,continue_sweep,start_dust_arrest,'
-                          'start_mop_wash,start_dry,stop_dry,start_eject,identify,'
-                          'reset_mop_life,reset_brush_life,reset_filter_life,reset_dust_bag_life',
+        'button_actions': 'start_sweep,stop_sweeping,start_dust_arrest,start_mop_wash,start_dry,stop_dry,'
+                          'start_eject,reset_mop_life,reset_brush_life,reset_filter_life',
         'sensor_properties': 'cleaning_area,cleaning_time,dry_left_time',
     },
     'xiaomi.vacuum.*': {
